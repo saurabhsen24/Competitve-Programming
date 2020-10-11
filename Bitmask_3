@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define pb              push_back
+#define mp              make_pair
+#define pii             pair<int,int>
+#define vi              vector<int>
+#define mii             map<int,int>
+#define pqb             priority_queue<int>
+#define pqs             priority_queue<int,vi,greater<int> >
+#define setbits(x)      __builtin_popcountll(x)
+#define zrobits(x)      __builtin_ctzll(x)
+#define mod 			1000000007
+#define tc(t) 			int t;cin >> t;while(t--)
+#define for0(i , n)		for(int i=0;i<n;i++)
+#define loop(i , a, b)	for(int i=a;i<=b;i++)
+#define endl 			'\n'
+#define inf 			1e18
+#define fi 				first
+#define se 				second
+
+int XX[8] = { +1, +1, +1, 0, 0, -1, -1, -1};
+int YY[8] = { +1, 0, -1, +1, -1, +1, 0, -1};
+int dx[4] = { -1, 1, 0, 0};
+int dy[4] = {0, 0, 1, -1};
+
+
+/*
+	Que: We are given an array containg n numbers. All the numbers are present
+	thrice except for one number which is only present once. Find the unique number.
+	Only use - bitwise operators, and no extra space.
+
+	7
+	1 1 1 2 2 2 3
+*/
+
+signed main() {
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+
+#ifndef ONLINE_JUDGE
+	freopen("input.txt" , "r" , stdin);
+	freopen("output.txt" , "w" , stdout);
+#endif
+
+	int n;
+	cin >> n;
+
+	int count[64] = {0}, no;
+
+	for0(i, n) {
+		cin >> no;
+		int j = 0;
+		while (no) {
+			count[j] += (no & 1);
+			no >>= 1;
+			j++;
+		}
+	}
+
+	int p = 1, ans = 0;
+	for (int i = 0; i < 64; i++) {
+		count[i] %= 3;
+		ans += count[i] * p;
+		p <<= 1;
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}
