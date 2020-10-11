@@ -24,7 +24,9 @@ int YY[8] = { +1, 0, -1, +1, -1, +1, 0, -1};
 int dx[4] = { -1, 1, 0, 0};
 int dy[4] = {0, 0, 1, -1};
 
-
+/*
+ find out the number of numbers between 1 and n which are divisible by any of the prime numbers less than 20.
+*/
 
 
 signed main() {
