@@ -26,6 +26,14 @@ int dy[4] = {0, 0, 1, -1};
 
 int dp[101][101];
 
+/**
+
+	a[i] is chosen by me so opponent can choose a[i+1] or a[j] and he will try to give me the choices which will give me less amount
+that's why we are using  min(solve(i+2,j),solve(i+1,j-1)). Similarly for the second case also where I am picking up the last coin and now opponent can choose 
+a[i] or a[j-1] so he will try to minimize the remaining amount so I am writing min(solve(i + 1, j - 1), solve(i, j - 2))
+
+**/
+
 int solve(int a[], int i, int j) {
 	if (i > j) return 0;
 	if (dp[i][j] != -1) return dp[i][j];
